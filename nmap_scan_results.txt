@@ -1,0 +1,111 @@
+================================================================
+NMAP SCAN RESULTS — TASK 1: BASIC NETWORK SCANNING
+================================================================
+
+Scan Date:        <YYYY-MM-DD>
+Analyst:          <your name>
+Target IP:        <target-ip>
+Target Description: <e.g. "Ubuntu 22.04 VM, VirtualBox host-only network">
+Scanning Machine: <e.g. "Kali Linux VM, same host-only network">
+Authorization:    Self-owned lab VM, isolated host-only/NAT network.
+
+----------------------------------------------------------------
+1. BASIC SCAN — `nmap <target-ip>`
+----------------------------------------------------------------
+Command run:
+    nmap <target-ip>
+
+Raw output:
+    <paste terminal output here>
+
+Summary:
+    Total ports scanned: <e.g. 1000>
+    Open ports found:    <count>
+    Closed/filtered:     <count>
+
+----------------------------------------------------------------
+2. SERVICE VERSION SCAN — `nmap -sV <target-ip>`
+----------------------------------------------------------------
+Command run:
+    nmap -sV <target-ip>
+
+Raw output:
+    <paste terminal output here>
+
+----------------------------------------------------------------
+3. OS DETECTION SCAN — `nmap -O <target-ip>`
+----------------------------------------------------------------
+Command run:
+    sudo nmap -O <target-ip>
+
+Raw output:
+    <paste terminal output here>
+
+Detected OS:      <e.g. "Linux 5.X" / "Running: Linux 5.X" / confidence %>
+Notes:            <e.g. "OS detection is a best-effort fingerprint match;
+                   confirm against known VM config">
+
+----------------------------------------------------------------
+4. OPEN PORTS — DETAILED FINDINGS & SECURITY ANALYSIS
+----------------------------------------------------------------
+For each open port found, fill in a block like the example below.
+
+--- EXAMPLE (delete/replace with your actual results) ---
+
+Port:           22/tcp
+Service:        ssh
+Version:        OpenSSH 8.9p1 Ubuntu
+What it does:   Secure Shell (SSH) provides encrypted remote command-line
+                access to the machine — used for remote administration.
+Security risk:  MEDIUM. SSH itself is secure when configured properly, but
+                is a common brute-force target. Risk increases if:
+                  - Password authentication is enabled (vs key-only)
+                  - Root login is permitted
+                  - The service is exposed to the public internet
+                  - The version is outdated / has known CVEs
+Recommendation: Disable password auth (key-based only), disable root login,
+                consider changing default port or adding fail2ban, restrict
+                access via firewall to known IPs.
+
+--- END EXAMPLE ---
+
+Port:           <port>/tcp
+Service:        <service name>
+Version:        <version string from -sV, or "unknown">
+What it does:   <1-2 sentence description of the service's purpose>
+Security risk:  <LOW / MEDIUM / HIGH — with justification>
+Recommendation: <hardening step(s)>
+
+Port:           <port>/tcp
+Service:        <service name>
+Version:        <version string>
+What it does:   <description>
+Security risk:  <LOW / MEDIUM / HIGH — with justification>
+Recommendation: <hardening step(s)>
+
+(Repeat block for every open port discovered.)
+
+----------------------------------------------------------------
+5. OVERALL RISK SUMMARY
+----------------------------------------------------------------
+Total open ports:        <count>
+Highest risk finding:    <e.g. "Port 21/tcp FTP — unencrypted credentials">
+Overall exposure level:  <LOW / MEDIUM / HIGH>
+
+Top recommendations:
+    1. <e.g. "Close/firewall unused ports (list them)">
+    2. <e.g. "Upgrade outdated service X to patched version">
+    3. <e.g. "Disable unencrypted protocols (FTP/Telnet) in favor of
+       encrypted equivalents (SFTP/SSH)">
+
+----------------------------------------------------------------
+6. SCREENSHOTS
+----------------------------------------------------------------
+See /screenshots folder:
+    - basic_scan.png
+    - service_version_scan.png
+    - os_detection_scan.png
+
+================================================================
+END OF REPORT
+================================================================
